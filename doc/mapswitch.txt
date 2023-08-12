@@ -1,0 +1,50 @@
+================================================================================
+
+								   *mapswitch*
+
+Note: This plugin was mostly created as a 'first plugin'.
+
+This plugin allows you to easily set temporary keymaps for common processes.
+
+It allows you to switch them on & off. See examples below:
+
+							   *mapswitch.setup()*
+mapswitch.setup({mappings})
+
+    Load {mappings} into mapswitch. 
+    This can be done repeatedly with different mappings.
+
+    Mappings should be a key pair, with a mapping {name} and then
+    a table of lists. Each list should be structured in {mode},{lhs},{rhs}
+    similar to calling *vim.keymaps.set()
+>
+
+	mapswitch.setup({
+	   dap = {
+		{"n", "<Leader>h", function() print("hello") end},
+		{"n", "<Leader>b", function() print("bye") end},
+	   }
+	})
+<
+    This loads the 'dap' into memory. You can then use *mapswitch.enable() and 
+    *mapswitch.disable() to toggle these keymaps.
+
+							  *mapswitch.enable()*
+mapswitch.enable({name})
+
+   Enable a mapswitch group by {name}. This overrides any current mappings.
+>
+	mapswitch.enable('dap')
+<
+							 *mapswitch.disable()*
+mapswitch.disable({name})
+
+    Disable an active mapswitch group by name. This restores any mappings
+    which were previously overridden.
+    >
+	mapswitch.disable('dap')
+< 
+    TODO: Make it so you can disable more any mapswitch, not just the most
+    recently added mapswitch.
+
+vim:tw=78:ts=8:ft=help:norl:

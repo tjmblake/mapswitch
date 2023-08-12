@@ -1,0 +1,4 @@
+mapswitch	mapswitch.txt	/*mapswitch*
+mapswitch.disable()	mapswitch.txt	/*mapswitch.disable()*
+mapswitch.enable()	mapswitch.txt	/*mapswitch.enable()*
+mapswitch.setup()	mapswitch.txt	/*mapswitch.setup()*
