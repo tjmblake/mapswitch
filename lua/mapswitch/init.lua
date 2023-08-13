@@ -52,7 +52,7 @@ M.setup                             = function(config)
 	end
 end
 
-M.enable = function(name)
+M.enable                            = function(name)
 	M.check_keymap_exists(name)
 
 	local mapLayer = {
@@ -67,7 +67,7 @@ M.enable = function(name)
 	M._stack[#M._stack + 1] = mapLayer
 end
 
-M.disable = function(name)
+M.disable                           = function(name)
 	M.check_keymap_exists(name)
 
 	if M._stack[#M._stack].name ~= name then
@@ -77,27 +77,5 @@ M.disable = function(name)
 	M.set_from_keymaps(M._stack[#M._stack].old)
 	table.remove(M._stack, #M._stack)
 end
-
-M.setup({
-	debug = {
-		{
-			mode = "n",
-			lhs = " gs",
-			rhs = ":lua print('gs')",
-		}
-	},
-	test = {
-		{
-			mode = "n",
-			lhs = " hi",
-			rhs = ":lua print('hi!')",
-		},
-		{
-			mode = "n",
-			lhs = " hi2",
-			rhs = ":lua print('hi2!')",
-		}
-	}
-})
 
 return M
